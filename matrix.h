@@ -3,14 +3,17 @@
 
 #include <vector>
 
-template <typename T> class Matrix {
+template <class T>
+class Matrix {
  private:
   std::vector<std::vector<T> > mat;
   unsigned int rows;
   unsigned int cols;
 
  public:
+  Matrix();
   Matrix(unsigned int _rows, unsigned int _cols, const T& _initial);
+  Matrix(int _rows, int _cols, const double& _initial, int bla);
   Matrix(const Matrix<T>& rhs);
   virtual ~Matrix();
 
@@ -18,13 +21,13 @@ template <typename T> class Matrix {
   Matrix<T>& operator=(const Matrix<T>& rhs);
 
   // Matrix mathematical operations
-  Matrix<T> operator+(const Matrix<T>& rhs);
+  Matrix<T>  operator+ (const Matrix<T>& rhs);
   Matrix<T>& operator+=(const Matrix<T>& rhs);
-  Matrix<T> operator-(const Matrix<T>& rhs);
+  Matrix<T>  operator- (const Matrix<T>& rhs);
   Matrix<T>& operator-=(const Matrix<T>& rhs);
-  Matrix<T> operator*(const Matrix<T>& rhs);
+  Matrix<T>  operator* (const Matrix<T>& rhs);
   Matrix<T>& operator*=(const Matrix<T>& rhs);
-  Matrix<T> transpose();
+  Matrix<T>  transpose();
 
   // Matrix/scalar operations
   Matrix<T> operator+(const T& rhs);
@@ -45,5 +48,7 @@ template <typename T> class Matrix {
   unsigned int get_cols() const;
 
 };
+
+#include "matrix.cpp"
 
 #endif // MATRIX_H
