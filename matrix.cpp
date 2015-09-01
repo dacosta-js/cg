@@ -2,6 +2,7 @@
 #define MATRIX_CPP
 
 #include "matrix.h"
+#include <iostream>
 
 // Parameter Constructor
 
@@ -12,16 +13,6 @@ Matrix<T>::Matrix() {
 
 template<class T>
 Matrix<T>::Matrix(unsigned int _rows, unsigned int _cols, const T &_initial) {
-  mat.resize(_rows);
-  for (unsigned int i=0; i<mat.size(); i++) {
-    mat[i].resize(_cols, _initial);
-  }
-  rows = _rows;
-  cols = _cols;
-}
-
-template<class T>
-Matrix<T>::Matrix( int _rows,int _cols, const double& _initial, int bla) {
   mat.resize(_rows);
   for (unsigned int i=0; i<mat.size(); i++) {
     mat[i].resize(_cols, _initial);
@@ -274,6 +265,17 @@ unsigned int Matrix<T>::get_rows() const {
 template<class T>
 unsigned int Matrix<T>::get_cols() const {
   return this->cols;
+}
+
+template<class T>
+std::ostream& operator<<(std::ostream& os, const Matrix<T>& matrix) {
+    for (int i=0; i<matrix.get_rows(); i++) {
+      for (int j=0; j<matrix.get_cols(); j++) {
+          os << matrix(i,j) << ",";
+      }
+      os << std::endl;
+    }
+    return os;
 }
 
 #endif MATRIX_CPP

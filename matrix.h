@@ -2,6 +2,7 @@
 #define MATRIX_H
 
 #include <vector>
+#include <iostream>
 
 template <class T>
 class Matrix {
@@ -13,7 +14,6 @@ class Matrix {
  public:
   Matrix();
   Matrix(unsigned int _rows, unsigned int _cols, const T& _initial);
-  Matrix(int _rows, int _cols, const double& _initial, int bla);
   Matrix(const Matrix<T>& rhs);
   virtual ~Matrix();
 
@@ -46,8 +46,8 @@ class Matrix {
   // Access the row and column sizes
   unsigned int get_rows() const;
   unsigned int get_cols() const;
-
 };
+
 
 #include "matrix.cpp"
 
