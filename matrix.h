@@ -46,6 +46,8 @@ class Matrix {
   // Access the row and column sizes
   unsigned int get_rows() const;
   unsigned int get_cols() const;
+
+  double determinant(int n);
 };
 
 
