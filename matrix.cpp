@@ -284,22 +284,24 @@ double Matrix<T>::determinant(int n) {
     double d = 0.0;
     Matrix submat(this->rows, this->cols, 0.0);
     int subi, subj;
-    if(n==2)
-        return((mat[0][0]*mat[1][1])-(mat[1][0]*mat[0][1]));
-    else{
-        for(int c=0;c<n;c++) {
+    if (n==2) {
+        return ((mat[0][0] * mat[1][1]) - (mat[1][0] * mat[0][1]));
+    }
+    else {
+        for (int c=0;c<n;c++) {
             subi=0;
-            for(int i=1;i<n;i++) {
+            for (int i=1;i<n;i++) {
                 subj=0;
-                for(int j=0;j<n;j++) {
-                    if(j==c)
+                for (int j=0;j<n;j++) {
+                    if (j==c) {
                          continue;
-                    submat(subi,subj)=mat[i][j];
+                    }
+                    submat(subi,subj) = mat[i][j];
                     subj++;
                 }
                 subi++;
             }
-            d=d+(pow(-1,c)*mat[0][c]*submat.determinant(n-1));
+            d = d + (pow(-1,c) * mat[0][c] * submat.determinant(n-1));
         }
     }
     return d;
